@@ -39,20 +39,45 @@ const Image = styled.img`
   border-radius: 200px;
 `
 
-
-function App () {
+const ItemCard = ({title, description, image}) => {
+  
   return (
-    <>
-    <GlobalStyle/>
     <Container>
       <TitleContent>
-        <Title>Gato fofo</Title>
-        <Description>descrição</Description>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
       </TitleContent>
       <ImageContent>
-        <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqFXQASz7-fThNOZZHb-K4SkcF4lSoycvXfg&usqp=CAU" alt="" />
+        <Image src={image} alt="" />
       </ImageContent>
     </Container>
+  )
+}
+
+function adicionarNumero(num1, num2) {
+  return num1 + num2
+}
+
+console.log(adicionarNumero(2,3))
+
+function App () {
+
+  const listaDeTarefas = [
+    {
+      title: "Gato",
+      description: "Um gato fofo",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqFXQASz7-fThNOZZHb-K4SkcF4lSoycvXfg&usqp=CAU",
+      alt: "gato fofo"
+    }, 
+  ]
+     return (
+    <>
+    <GlobalStyle/>
+    {
+      listaDeTarefas.map(tarefa => (
+        <ItemCard {...tarefa}/>
+      ))
+    }
     </>
   )
 }
